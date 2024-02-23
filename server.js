@@ -22,9 +22,9 @@ let transporter = nodemailer.createTransport({
 function conectarABaseDeDatos() {
   const dbConfig = {
     host: "193.203.175.34",
-    user: "u948052382_reumacaribe",
+    user: "u965232645_reumacaribe24",
     password: "W!wRkZ6*9f",
-    database: "u948052382_reumacaribe",
+    database: "u965232645_reumacaribe24",
   };
 
   function handleDisconnect() {
