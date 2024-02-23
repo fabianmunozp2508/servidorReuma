@@ -64,7 +64,7 @@ app.post("/saveProfile", (req, res) => {
   const query =
     "INSERT INTO inscritos (nombre1, apellido1, cedula) VALUES (?, ?, ?)";
 
-  db.query(query, [nombre1, apellido1, cedula], (err, result) => {
+  db.query(query, [nombre, apellido, documento], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -80,7 +80,7 @@ app.post("/updateProfile", (req, res) => {
   const query =
     "UPDATE inscritos SET nombre1 = ?, apellido1 = ? WHERE cedula = ?";
 
-  db.query(query, [nombre1, apellido1, cedula], (err, result) => {
+  db.query(query, [nombre, apellido, documento], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
