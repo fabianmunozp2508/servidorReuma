@@ -59,8 +59,8 @@ const db = conectarABaseDeDatos();
 
 // Endpoint para guardar perfiles
 app.post("/saveProfile", (req, res) => {
-  // Cambiando a los nombres de campos correctos según tu tabla 'inscritos'
-  const { nombre1, apellido1, cedula } = req.body;
+  const { nombre, apellido, documento } = req.body;
+  console.log("Recibido:", nombre, apellido, documento);
   const query =
     "INSERT INTO inscritos (nombre1, apellido1, cedula) VALUES (?, ?, ?)";
 
@@ -75,8 +75,8 @@ app.post("/saveProfile", (req, res) => {
 
 // Endpoint para actualizar perfiles
 app.post("/updateProfile", (req, res) => {
-  // Cambiando a los nombres de campos correctos según tu tabla 'inscritos'
-  const { nombre1, apellido1, cedula } = req.body;
+  const { nombre, apellido, documento } = req.body;
+  console.log("Recibido:", nombre, apellido, documento);
   const query =
     "UPDATE inscritos SET nombre1 = ?, apellido1 = ? WHERE cedula = ?";
 
