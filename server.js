@@ -57,14 +57,58 @@ function conectarABaseDeDatos() {
 const db = conectarABaseDeDatos();
 
 
-// Endpoint para guardar perfiles
 app.post("/saveProfile", (req, res) => {
-  // Cambiando a los nombres de campos correctos según tu tabla 'inscritos'
   const { nombre1, apellido1, cedula } = req.body;
-  const query =
-    "INSERT INTO inscritos (nombre1, apellido1, cedula) VALUES (?, ?, ?)";
+  // Asumiendo que todos los otros campos son de tipo VARCHAR y aceptan cadenas vacías
+  const emptyString = "";
+  const query = `
+    INSERT INTO inscritos (
+      nombre1, nombre2, apellido1, apellido2, cedula,
+      nivel1, nivel2, nivel3, nombretota, apartado,
+      direccionr, direcciono, profesion, cargo, entidad,
+      telecontac, teleoficin, telecelula, telefax, email,
+      pais, ciudad, ciudadt, fecha, comentario,
+      aereo, hotel, estado, anual, asistio,
+      fechaasis, imprimio, material, estatus, patrocina,
+      sexo, fechanto, eps, tiposangre, concepto,
+      rnumero, rmoneda, rvalor, rfactura, rfecha,
+      robserva, rfpago, taller1, taller2, taller3,
+      taller4, taller5, taller6, taller7, taller8,
+      taller9, membresia, abono, saldo, perfilpago,
+      invita, subeve1, subeve2, subeve3, subeve4,
+      subeve5, subeve6, subeve7, subeve8, subeve9,
+      hhotel, hingreso, hsalida, hhabita, hvalor,
+      habono, hsaldo, hpago, htipo, hobserva,
+      vylinea, vyvuelo, vyfecha, vyhora, vyobserva,
+      vslinea, vsvuelo, vsfecha, vshora, vsobserva,
+      actualizado_user, actualizado_ff, actualizado_hh
+    ) VALUES (?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?,
+               ?, ?, ?, ?, ?
+    )`;
 
-  db.query(query, [nombre1, apellido1, cedula], (err, result) => {
+  const values = [
+    nombre1, emptyString, apellido1, emptyString, cedula,
+    ...Array(65).fill(emptyString) // Llena el resto de los valores con cadenas vacías
+  ];
+
+  db.query(query, values, (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
