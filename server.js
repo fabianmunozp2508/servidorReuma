@@ -60,12 +60,11 @@ const db = conectarABaseDeDatos();
 // Endpoint para guardar perfiles
 app.post("/saveProfile", (req, res) => {
   // Cambiando a los nombres de campos correctos según tu tabla 'inscritos'
-  const { nombre, apellido, documento } = req.body;
-  console.log("Recibido:", nombre, apellido, documento);
+  const { nombre1, apellido1, cedula } = req.body;
   const query =
     "INSERT INTO inscritos (nombre1, apellido1, cedula) VALUES (?, ?, ?)";
 
-  db.query(query, [nombre, apellido, documento], (err, result) => {
+  db.query(query, [nombre1, apellido1, cedula], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
