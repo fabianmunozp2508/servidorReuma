@@ -115,7 +115,7 @@ app.post("/sendEmail", (req, res) => {
     html: `
         <div style="font-family: 'Arial', sans-serif; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             <img src="https://i.ibb.co/P5KpT0f/banner-angosto.jpg" alt="Banner Reumacaribe" style="width: 100%; height: auto; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-            <h1 style="color: #f40; text-align: center;">Confirmación de Inscripción</h1>
+            <h1 style="color: #f40; text-align: center;">Inscripción al  XXIX Curso de Postgrado en  Reumatología - Ruta PANLAR</h1>
             <p>Hola ${nombre} ${apellido},</p>
             <p>Estamos emocionados de confirmar tu inscripción. Aquí están los detalles:</p>
             <div style="background-color: #f2f2f2; padding: 20px; margin: 20px 0; border-radius: 10px;">
