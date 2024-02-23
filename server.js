@@ -59,11 +59,12 @@ const db = conectarABaseDeDatos();
 
 // Endpoint para guardar perfiles
 app.post("/saveProfile", (req, res) => {
-  const { nombre, apellido, documento } = req.body;
+  // Cambiando a los nombres de campos correctos según tu tabla 'inscritos'
+  const { nombre1, apellido1, cedula } = req.body;
   const query =
-    "INSERT INTO Usuarios (nombre, apellido, documento) VALUES (?, ?, ?)";
+    "INSERT INTO inscritos (nombre1, apellido1, cedula) VALUES (?, ?, ?)";
 
-  db.query(query, [nombre, apellido, documento], (err, result) => {
+  db.query(query, [nombre1, apellido1, cedula], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -74,11 +75,12 @@ app.post("/saveProfile", (req, res) => {
 
 // Endpoint para actualizar perfiles
 app.post("/updateProfile", (req, res) => {
-  const { nombre, apellido, documento } = req.body;
+  // Cambiando a los nombres de campos correctos según tu tabla 'inscritos'
+  const { nombre1, apellido1, cedula } = req.body;
   const query =
-    "UPDATE Usuarios SET nombre = ?, apellido = ? WHERE documento = ?";
+    "UPDATE inscritos SET nombre1 = ?, apellido1 = ? WHERE cedula = ?";
 
-  db.query(query, [nombre, apellido, documento], (err, result) => {
+  db.query(query, [nombre1, apellido1, cedula], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -89,7 +91,8 @@ app.post("/updateProfile", (req, res) => {
 
 // Endpoint para obtener todos los perfiles
 app.get("/getProfiles", (req, res) => {
-  const query = "SELECT * FROM Usuarios";
+  // Cambiando a la tabla 'inscritos'
+  const query = "SELECT * FROM inscritos";
 
   db.query(query, (err, results) => {
     if (err) {
@@ -99,6 +102,7 @@ app.get("/getProfiles", (req, res) => {
     }
   });
 });
+
 
 app.post("/sendEmail", (req, res) => {
   const { nombre, apellido, documento, ticketNumber, email } = req.body;
